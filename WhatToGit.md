@@ -1,6 +1,6 @@
 # TODO / NEEDSWORK / FIXME / XXX markers in git-src
 
-410 lines in total, at HEAD `dea0ea35` (v2.55.0-590-gdea0ea3582). Collected on 2026-08-20.
+410 lines in total, at HEAD `1a3e64c6` (v2.55.0-618-g1a3e64c6c4). Collected on 2026-08-24.
 
 Dates come from `git blame -w` and refer to the last time the line was touched, which is not necessarily when the marker was added.
 
@@ -983,7 +983,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 `odb.h` (1)
 
-- 2025-07-01 `e989dd96` [L489](https://github.com/git/git/blob/master/odb.h#L489)
+- 2025-07-01 `e989dd96` [L502](https://github.com/git/git/blob/master/odb.h#L502)
 
   ```
   /*
@@ -1080,7 +1080,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2015-07-07 `68411046` [L2835](https://github.com/git/git/blob/master/ref-filter.c#L2835)
+- 2015-07-07 `68411046` [L2901](https://github.com/git/git/blob/master/ref-filter.c#L2901)
 
   ```
   /*
@@ -1334,7 +1334,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 `setup.c` (1)
 
-- 2017-06-20 `73f192c9` [L2049](https://github.com/git/git/blob/master/setup.c#L2049)
+- 2017-06-20 `73f192c9` [L2042](https://github.com/git/git/blob/master/setup.c#L2042)
 
   ```
   /*
