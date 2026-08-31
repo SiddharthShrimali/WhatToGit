@@ -1,6 +1,6 @@
 # TODO / NEEDSWORK / FIXME / XXX markers in git-src
 
-410 lines in total, at HEAD `1a3e64c6` (v2.55.0-618-g1a3e64c6c4). Collected on 2026-08-24.
+412 lines in total, at HEAD `c73e8535` (v2.55.0-737-gc73e85354c). Collected on 2026-08-31.
 
 Dates come from `git blame -w` and refer to the last time the line was touched, which is not necessarily when the marker was added.
 
@@ -12,8 +12,8 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 | Marker | Count |
 | --- | --- |
-| TODO | 208 |
-| NEEDSWORK | 122 |
+| TODO | 207 |
+| NEEDSWORK | 125 |
 | FIXME | 40 |
 | XXX | 41 |
 
@@ -21,7 +21,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 | Directory | Count |
 | --- | --- |
-| (root) | 156 |
+| (root) | 158 |
 | builtin | 56 |
 | compat | 8 |
 | contrib | 11 |
@@ -63,12 +63,12 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 | 2023 | 17 |
 | 2024 | 20 |
 | 2025 | 19 |
-| 2026 | 34 |
+| 2026 | 36 |
 
 ## Full listing
 
 <details>
-<summary><b>(root)</b> &mdash; 156 markers</summary>
+<summary><b>(root)</b> &mdash; 158 markers</summary>
 
 `.clang-format` (1)
 
@@ -303,7 +303,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2019-04-05 `7fbbcb21` [L7447](https://github.com/git/git/blob/master/diff.c#L7447)
+- 2019-04-05 `7fbbcb21` [L7449](https://github.com/git/git/blob/master/diff.c#L7449)
 
   ```
   /*
@@ -702,7 +702,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 `git.c` (1)
 
-- 2016-01-26 `441981bc` [L860](https://github.com/git/git/blob/master/git.c#L860)
+- 2016-01-26 `441981bc` [L864](https://github.com/git/git/blob/master/git.c#L864)
 
   ```
   /*
@@ -870,6 +870,41 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 - 2019-09-18 `627b8268` [L395](https://github.com/git/git/blob/master/list-objects-filter-options.c#L395) `/* NEEDSWORK: 'expand' result leaking??? */`
 
+`list-objects-filter.c` (1)
+
+- 2026-08-14 `401c3086` [L833](https://github.com/git/git/blob/master/list-objects-filter.c#L833)
+
+  ```
+  /*
+   * NEEDSWORK: this reimplements the blob:limit size check rather than
+   * reusing the existing filter machinery in
+   * list_objects_filter__filter_object(). That machinery is currently
+   * tied to the object-walk path and cannot easily be driven from a
+   * plain oidset. It would be nice to refactor the filter code so this
+   * helper can reuse it instead of duplicating the size check.
+   */
+  ```
+
+
+`list-objects-filter.h` (1)
+
+- 2026-08-14 `401c3086` [L102](https://github.com/git/git/blob/master/list-objects-filter.h#L102)
+
+  ```
+  /*
+   * Given a set of OIDs in 'in', populate 'omitted' with those that
+   * would be filtered by 'opts'. Currently only blob:limit=N is
+   * supported. Objects that cannot be read are silently skipped.
+   *
+   * NEEDSWORK: this reimplements the blob:limit size check rather than
+   * reusing the existing filter machinery. See the matching comment in
+   * list-objects-filter.c.
+   *
+   * Return 0 on success, -1 if the filter is not supported.
+   */
+  ```
+
+
 `list-objects.c` (1)
 
 - 2017-11-15 `ce5b6f9b` [L416](https://github.com/git/git/blob/master/list-objects.c#L416)
@@ -960,7 +995,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 `object-file.c` (1)
 
-- 2026-07-10 `48d730a1` [L1326](https://github.com/git/git/blob/master/object-file.c#L1326)
+- 2026-07-10 `48d730a1` [L1324](https://github.com/git/git/blob/master/object-file.c#L1324)
 
   ```
   /*
@@ -1139,7 +1174,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 `repack-promisor.c` (2)
 
-- 2025-10-15 `29e93551` [L60](https://github.com/git/git/blob/master/repack-promisor.c#L60)
+- 2025-10-15 `29e93551` [L71](https://github.com/git/git/blob/master/repack-promisor.c#L71)
 
   ```
   /*
@@ -1155,7 +1190,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2026-01-05 `dd8c4e12` [L93](https://github.com/git/git/blob/master/repack-promisor.c#L93)
+- 2026-01-05 `dd8c4e12` [L105](https://github.com/git/git/blob/master/repack-promisor.c#L105)
 
   ```
   /*
@@ -1309,8 +1344,8 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2021-09-27 `1b5f3733` [L4124](https://github.com/git/git/blob/master/sequencer.c#L4124) `unpack_tree_opts.preserve_ignored = 0; /* FIXME: !overwrite_ignore */`
-- 2020-11-02 `14c4586c` [L4417](https://github.com/git/git/blob/master/sequencer.c#L4417)
+- 2021-09-27 `1b5f3733` [L4125](https://github.com/git/git/blob/master/sequencer.c#L4125) `unpack_tree_opts.preserve_ignored = 0; /* FIXME: !overwrite_ignore */`
+- 2020-11-02 `14c4586c` [L4418](https://github.com/git/git/blob/master/sequencer.c#L4418)
 
   ```
   /*
@@ -1321,7 +1356,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2026-07-15 `42554b78` [L5041](https://github.com/git/git/blob/master/sequencer.c#L5041)
+- 2026-07-15 `42554b78` [L5042](https://github.com/git/git/blob/master/sequencer.c#L5042)
 
   ```
   /*
@@ -1334,7 +1369,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 `setup.c` (1)
 
-- 2017-06-20 `73f192c9` [L2042](https://github.com/git/git/blob/master/setup.c#L2042)
+- 2017-06-20 `73f192c9` [L2041](https://github.com/git/git/blob/master/setup.c#L2041)
 
   ```
   /*
@@ -1560,17 +1595,6 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 - 2021-09-27 `1b5f3733` [L2017](https://github.com/git/git/blob/master/builtin/am.c#L2017) `opts.preserve_ignored = 0; /* FIXME: !overwrite_ignore */`
 
-`builtin/cat-file.c` (1)
-
-- 2026-07-24 `0ae93f56` [L852](https://github.com/git/git/blob/master/builtin/cat-file.c#L852)
-
-  ```
-  /*
-   * TODO: Use the default format once %(objecttype) is supported.
-   */
-  ```
-
-
 `builtin/checkout.c` (2)
 
 - 2008-08-30 `0cf8581e` [L366](https://github.com/git/git/blob/master/builtin/checkout.c#L366)
@@ -1650,9 +1674,9 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
   ```
 
 
-`builtin/fast-import.c` (4)
+`builtin/fast-import.c` (5)
 
-- 2020-05-30 `d42a2fb7` [L1977](https://github.com/git/git/blob/master/builtin/fast-import.c#L1977)
+- 2020-05-30 `d42a2fb7` [L1997](https://github.com/git/git/blob/master/builtin/fast-import.c#L1997)
 
   ```
   /*
@@ -1662,7 +1686,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2020-05-30 `d42a2fb7` [L1990](https://github.com/git/git/blob/master/builtin/fast-import.c#L1990)
+- 2020-05-30 `d42a2fb7` [L2010](https://github.com/git/git/blob/master/builtin/fast-import.c#L2010)
 
   ```
   /*
@@ -1671,7 +1695,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2026-03-12 `ee66c793` [L2919](https://github.com/git/git/blob/master/builtin/fast-import.c#L2919)
+- 2026-03-12 `ee66c793` [L2952](https://github.com/git/git/blob/master/builtin/fast-import.c#L2952)
 
   ```
   /*
@@ -1686,7 +1710,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2019-10-03 `3164e6bd` [L3304](https://github.com/git/git/blob/master/builtin/fast-import.c#L3304)
+- 2019-10-03 `3164e6bd` [L3337](https://github.com/git/git/blob/master/builtin/fast-import.c#L3337)
 
   ```
   /*
@@ -1697,6 +1721,27 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    *
    * NEEDSWORK: replace list of tags with hashmap for faster
    * deletion?
+   */
+  ```
+
+- 2026-08-11 `86393769` [L4221](https://github.com/git/git/blob/master/builtin/fast-import.c#L4221)
+
+  ```
+  /*
+   * We don't parse most options until after we've seen the set of
+   * "feature" lines at the start of the stream (which allows the command
+   * line to override stream data). But we must do an early parse of any
+   * command-line options that impact how we interpret the feature lines.
+   *
+   * NEEDSWORK: This scan only matches the exact "--allow-unsafe-features"
+   * spelling and stops at the first argument that doesn't start with a
+   * dash. As parse_options() below also accepts unambiguous abbreviations
+   * and values separated by a space from their option, the two disagree
+   * for command lines like "--allow-unsafe" or "--depth 5
+   * --allow-unsafe-features": parse_options() accepts the option, but
+   * this scan doesn't see it, so unsafe features from the stream are
+   * still refused. This errs on the safe side, but should be fixed by
+   * teaching this scan about the options that take a value.
    */
   ```
 
@@ -2296,15 +2341,15 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
   # __git_count_arguments requires 1 argument: the git command executed.
   ```
 
-- 2013-01-11 `fea16b47` [L1816](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash#L1816) `# XXX should we check for -x option ?`
-- 2013-01-11 `fea16b47` [L2165](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash#L2165)
+- 2013-01-11 `fea16b47` [L1826](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash#L1826) `# XXX should we check for -x option ?`
+- 2013-01-11 `fea16b47` [L2188](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash#L2188)
 
   ```
   # XXX ignore options like --modified and always suggest all cached
   # files.
   ```
 
-- 2023-12-03 `a1fbe26a` [L3380](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash#L3380)
+- 2023-12-03 `a1fbe26a` [L3403](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash#L3403)
 
   ```
   # Since sparse-index is limited to cone-mode, in non-cone-mode the
@@ -2324,7 +2369,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
   # complex.  For now, just punt on all of this...
   ```
 
-- 2021-03-24 `61318078` [L3488](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash#L3488) `# NEEDSWORK: can we somehow unify this with the options in _git_log() `
+- 2021-03-24 `61318078` [L3511](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash#L3511) `# NEEDSWORK: can we somehow unify this with the options in _git_log() `
 
 `contrib/credential/netrc/git-credential-netrc.perl` (1)
 
@@ -2483,7 +2528,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 `odb/source-loose.c` (1)
 
-- 2026-06-01 `87af3bb4` [L972](https://github.com/git/git/blob/master/odb/source-loose.c#L972) `/* TODO: this is a known omission that we'll want to address eventuall`
+- 2026-06-01 `87af3bb4` [L975](https://github.com/git/git/blob/master/odb/source-loose.c#L975) `/* TODO: this is a known omission that we'll want to address eventuall`
 
 </details>
 
@@ -2676,7 +2721,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 `refs/files-backend.c` (1)
 
-- 2024-05-07 `644daf77` [L3164](https://github.com/git/git/blob/master/refs/files-backend.c#L3164)
+- 2024-05-07 `644daf77` [L3163](https://github.com/git/git/blob/master/refs/files-backend.c#L3163)
 
   ```
   /*
@@ -2689,7 +2734,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 `refs/reftable-backend.c` (4)
 
-- 2025-04-08 `ca89c18d` [L1359](https://github.com/git/git/blob/master/refs/reftable-backend.c#L1359)
+- 2025-04-08 `ca89c18d` [L1358](https://github.com/git/git/blob/master/refs/reftable-backend.c#L1358)
 
   ```
   /*
@@ -2705,7 +2750,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2024-05-07 `644daf77` [L1564](https://github.com/git/git/blob/master/refs/reftable-backend.c#L1564)
+- 2024-05-07 `644daf77` [L1563](https://github.com/git/git/blob/master/refs/reftable-backend.c#L1563)
 
   ```
   /*
@@ -2715,7 +2760,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2024-11-26 `46b5f670` [L2213](https://github.com/git/git/blob/master/refs/reftable-backend.c#L2213)
+- 2024-11-26 `46b5f670` [L2212](https://github.com/git/git/blob/master/refs/reftable-backend.c#L2212)
 
   ```
   /*
@@ -2724,7 +2769,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
    */
   ```
 
-- 2024-11-26 `46b5f670` [L2264](https://github.com/git/git/blob/master/refs/reftable-backend.c#L2264)
+- 2024-11-26 `46b5f670` [L2263](https://github.com/git/git/blob/master/refs/reftable-backend.c#L2263)
 
   ```
   /*
@@ -2929,14 +2974,14 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
   # existing index entry with the SKIP_WORKTREE bit cleared.
   ```
 
-- 2021-07-14 `e5ca2910` [L1967](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L1967)
+- 2021-07-14 `e5ca2910` [L1978](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L1978)
 
   ```
   # NEEDSWORK: a sparse-checkout behaves differently from a full checkout
   # in this scenario, but it shouldn't.
   ```
 
-- 2021-07-20 `70569fad` [L2002](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L2002)
+- 2021-07-20 `70569fad` [L2013](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L2013)
 
   ```
   # NEEDSWORK: 'git checkout' behaves incorrectly in the case of
@@ -2945,7 +2990,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
   # measure of how it _should_ behave.
   ```
 
-- 2021-07-20 `70569fad` [L2055](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L2055)
+- 2021-07-20 `70569fad` [L2066](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L2066)
 
   ```
   # NEEDSWORK: 'git checkout' behaves incorrectly in the case of
@@ -2954,7 +2999,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
   # measure of how it _should_ behave.
   ```
 
-- 2022-09-22 `7cae7627` [L2258](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L2258)
+- 2022-09-22 `7cae7627` [L2269](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L2269)
 
   ```
   	ensure_not_expanded grep --cached a -- "deep/*"
@@ -2974,7 +3019,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
   	git grep --cached --recurse-submodules a -- "*/folder1/*" &&
   ```
 
-- 2022-09-22 `7cae7627` [L2273](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L2273)
+- 2022-09-22 `7cae7627` [L2284](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L2284)
 
   ```
   # NEEDSWORK: this test is not actually testing the code. The design purpose
@@ -2985,7 +3030,7 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
   # we don't have the ideal test environment yet.
   ```
 
-- 2023-08-11 `4723ae10` [L2490](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L2490)
+- 2023-08-11 `4723ae10` [L2501](https://github.com/git/git/blob/master/t/t1092-sparse-checkout-compatibility.sh#L2501)
 
   ```
   # NEEDSWORK: The 'diff --check' test is left as 'test_expect_failure' due
@@ -3295,10 +3340,10 @@ This file is generated. Run `deno task report` to rebuild it; do not edit it by 
 
 `t/t9902-completion.sh` (4)
 
-- 2013-04-27 `ddf07bdd` [L2814](https://github.com/git/git/blob/master/t/t9902-completion.sh#L2814) `: TODO .gitignore should not be here &&`
-- 2013-04-27 `ddf07bdd` [L2822](https://github.com/git/git/blob/master/t/t9902-completion.sh#L2822) `: TODO .gitignore should not be here &&`
-- 2013-04-27 `ddf07bdd` [L2835](https://github.com/git/git/blob/master/t/t9902-completion.sh#L2835) `: TODO .gitignore should not be here &&`
-- 2013-04-27 `ddf07bdd` [L2846](https://github.com/git/git/blob/master/t/t9902-completion.sh#L2846) `: TODO .gitignore should not be here &&`
+- 2013-04-27 `ddf07bdd` [L2928](https://github.com/git/git/blob/master/t/t9902-completion.sh#L2928) `: TODO .gitignore should not be here &&`
+- 2013-04-27 `ddf07bdd` [L2936](https://github.com/git/git/blob/master/t/t9902-completion.sh#L2936) `: TODO .gitignore should not be here &&`
+- 2013-04-27 `ddf07bdd` [L2949](https://github.com/git/git/blob/master/t/t9902-completion.sh#L2949) `: TODO .gitignore should not be here &&`
+- 2013-04-27 `ddf07bdd` [L2960](https://github.com/git/git/blob/master/t/t9902-completion.sh#L2960) `: TODO .gitignore should not be here &&`
 
 `t/test-lib.sh` (5)
 
